@@ -1,9 +1,27 @@
 -- ***** BASE *****
 
 -- Get all customers and their addresses.
+SELECT "c"."first_name", "c"."last_name", "a"."street", "a"."city", "a"."state", "a"."zip"
+FROM "customers" as "c"
+JOIN "addresses" as "a" ON "c"."id" = "a"."customer_id";
+
 -- Get all orders and their line items (orders, quantity and product).
+SELECT "o"."id", "li"."quantity", "li"."product_id" 
+FROM "orders" as "o"
+JOIN "line_items" as "li" ON "li"."order_id" = "o"."id";
+
 -- Which warehouses have cheetos?
+SELECT "w"."warehouse", "description" FROM "warehouse" as "w"
+JOIN "warehouse_product" as "wp" ON "w"."id" = "wp"."warehouse_id"
+JOIN "products" as "p" ON "p"."id" = "wp"."product_id"
+WHERE "description" = 'cheetos';
+
 -- Which warehouses have diet pepsi?
+SELECT "w"."warehouse", "description" FROM "warehouse" as "w"
+JOIN "warehouse_product" as "wp" ON "w"."id" = "wp"."warehouse_id"
+JOIN "products" as "p" ON "p"."id" = "wp"."product_id"
+WHERE "description" = 'diet pepsi';
+
 -- Get the number of orders for each customer. NOTE: It is OK if those without orders are not included in results.
 -- How many customers do we have?
 -- How many products do we carry?
