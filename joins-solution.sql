@@ -23,6 +23,11 @@ JOIN "products" as "p" ON "p"."id" = "wp"."product_id"
 WHERE "description" = 'diet pepsi';
 
 -- Get the number of orders for each customer. NOTE: It is OK if those without orders are not included in results.
+SELECT "c"."first_name", "c"."last_name", COUNT("o"."id") FROM "customers" as "c"
+JOIN "addresses" as "a" ON "c"."id" = "a"."customer_id"
+JOIN "orders" as "o" ON "a"."id" = "o"."address_id"
+GROUP BY "c"."first_name", "c"."last_name";
+
 -- How many customers do we have?
 -- How many products do we carry?
 -- What is the total available on-hand quantity of diet pepsi?
