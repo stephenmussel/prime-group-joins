@@ -29,7 +29,11 @@ JOIN "orders" as "o" ON "a"."id" = "o"."address_id"
 GROUP BY "c"."first_name", "c"."last_name";
 
 -- How many customers do we have?
+SELECT COUNT("c"."id") FROM "customers" as "c";
+
 -- How many products do we carry?
+SELECT COUNT("p"."id") FROM "products" as "p";
+
 -- What is the total available on-hand quantity of diet pepsi?
 
 -- ***** STRETCH *****
